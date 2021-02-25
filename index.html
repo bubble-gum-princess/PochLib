@@ -12,6 +12,8 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="bootstrap-3.4.1/css/bootstrap-theme.min.css">
 
+	<link rel="stylesheet" href="css/main.css">
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="bootstrap-3.4.1/js/bootstrap.min.js"></script>
 	<script src="js/controler.js"></script>
@@ -27,7 +29,7 @@
 			<button id="newBook" type="button" class="btn btn-success" onclick="addBook()">Ajouter un livre</button>
 		</div>
 
-		<div id="searchForm" class="hidden">
+		<div id="searchForm" class="">
 			<form>
 				<div class="form-group">
 				  <label for="exampleInputEmail1">Titre du livre</label>
@@ -38,12 +40,34 @@
 				  <input type="text" class="form-control" id="author">
 				</div>
 				<p>
-					<button type="submit" class="btn btn-success btn-block">Rechercher</button>
+					<button type="button" class="btn btn-success btn-block" onclick="search()">Rechercher</button>
 				</p>
 				<p>
 					<button type="button" class="btn btn-danger btn-block" onclick="cancelSearch()">Annuler</button>
 				</p>
 			  </form>
+			  <div id="searchResult">
+				  <div class="row">
+					  <div class="col-lg-1"></div>
+					  <div class="col-lg-4 div-book">
+						  <h2>Titre: ttt</h2>
+						  <h2>Id: ididid</h2>
+						  <h4>Auteur: AuteurAuteur</h4>
+						  <p>Description: loploploplopl oploplop loploploplopl oploplo ploplopl oploploploplop</p>
+						  <img src="img/unavailable.png" class="img-responsive img-book" >
+					  </div>
+					  <div class="col-lg-1"></div>
+					  <div class="col-lg-1"></div>	
+					  <div class="col-lg-4 div-book">
+						<h2>Titre: ttt</h2>
+						<h2>Id: ididid</h2>
+						<h4>Auteur: AuteurAuteur</h4>
+						<p>Description: loploploplopl oploplop loploploplopl oploplo ploplopl oploploploplop</p>
+						<img src="img/unavailable.png" class="img-responsive img-book" >
+					</div>
+					<div class="col-lg-1"></div>
+				  </div>
+			  </div>
 		</div>
 		
 		<div id="content" class="text-center">
