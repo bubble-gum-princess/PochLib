@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Poch'Lib</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="bootstrap-3.4.1/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="bootstrap-3.4.1/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="bootstrap-3.4.1/js/bootstrap.min.js"></script>
+	<script src="js/controler.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Poch'Lib</h1>
+		</div>
+		<div class="text-center">
+			<h5>Nouveau Livre</h5>
+			<button id="newBook" type="button" class="btn btn-success" onclick="addBook()">Ajouter un livre</button>
+		</div>
+
+		<div id="searchForm" class="hidden">
+			<form>
+				<div class="form-group">
+				  <label for="exampleInputEmail1">Titre du livre</label>
+				  <input type="text" class="form-control" id="title">
+				</div>
+				<div class="form-group">
+				  <label for="exampleInputPassword1">Auteur</label>
+				  <input type="text" class="form-control" id="author">
+				</div>
+				<p>
+					<button type="submit" class="btn btn-success btn-block">Rechercher</button>
+				</p>
+				<p>
+					<button type="button" class="btn btn-danger btn-block" onclick="cancelSearch()">Annuler</button>
+				</p>
+			  </form>
+		</div>
+		
+		<div id="content" class="text-center">
+			<hr>
+			<h5>Ma poch'liste</h5>
+		</div>
+		
+
+		
+	</div>
+</body>
+
+</html>
