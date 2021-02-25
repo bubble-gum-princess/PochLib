@@ -29,15 +29,15 @@
 			<button id="newBook" type="button" class="btn btn-success" onclick="addBook()">Ajouter un livre</button>
 		</div>
 
-		<div id="searchForm" class="">
+		<div id="searchForm" class="hidden">
 			<form>
 				<div class="form-group">
-				  <label for="exampleInputEmail1">Titre du livre</label>
-				  <input type="text" class="form-control" id="title">
+					<label for="exampleInputEmail1">Titre du livre</label>
+					<input type="text" class="form-control" id="title">
 				</div>
 				<div class="form-group">
-				  <label for="exampleInputPassword1">Auteur</label>
-				  <input type="text" class="form-control" id="author">
+					<label for="exampleInputPassword1">Auteur</label>
+					<input type="text" class="form-control" id="author">
 				</div>
 				<p>
 					<button type="button" class="btn btn-success btn-block" onclick="search()">Rechercher</button>
@@ -45,38 +45,17 @@
 				<p>
 					<button type="button" class="btn btn-danger btn-block" onclick="cancelSearch()">Annuler</button>
 				</p>
-			  </form>
-			  <div id="searchResult">
-				  <div class="row">
-					  <div class="col-lg-1"></div>
-					  <div class="col-lg-4 div-book">
-						  <h2>Titre: ttt</h2>
-						  <h2>Id: ididid</h2>
-						  <h4>Auteur: AuteurAuteur</h4>
-						  <p>Description: loploploplopl oploplop loploploplopl oploplo ploplopl oploploploplop</p>
-						  <img src="img/unavailable.png" class="img-responsive img-book" >
-					  </div>
-					  <div class="col-lg-1"></div>
-					  <div class="col-lg-1"></div>	
-					  <div class="col-lg-4 div-book">
-						<h2>Titre: ttt</h2>
-						<h2>Id: ididid</h2>
-						<h4>Auteur: AuteurAuteur</h4>
-						<p>Description: loploploplopl oploplop loploploplopl oploplo ploplopl oploploploplop</p>
-						<img src="img/unavailable.png" class="img-responsive img-book" >
-					</div>
-					<div class="col-lg-1"></div>
-				  </div>
-			  </div>
+			</form>
+			<div id="searchResult"></div>
 		</div>
-		
+
 		<div id="content" class="text-center">
 			<hr>
 			<h5>Ma poch'liste</h5>
 		</div>
-		
 
-		
+
+
 	</div>
 </body>
 
