@@ -10,14 +10,12 @@ function addBook() {
    display("line2");
    hide("line1");
    hide('newBook');
-  /* hide('poch-list');*/
 
 } 
 
 function cancelSearch() {
     hide("searchForm");
     display('newBook');
-    display('poch-list');
     display('line1')
     document.getElementById('title').value="";
     document.getElementById('author').value="";
@@ -74,7 +72,7 @@ function displayBooks(books) {
         if (i % 2 === 1) {
             div.innerHTML += '<div class="div-empty"></div>';
         }
-        div.innerHTML += bookToHtml(book);
+        div.innerHTML += bookToHtml(book, true);
     }
     
     books.forEach(book => console.log(book));
@@ -84,10 +82,15 @@ function displaySearchMessage(msg) {
     document.getElementById('searchResult').innerHTML += '<div class="text-center"> <h5>' + msg + '</h5> </div>';
 }
 
-function bookToHtml(book) {
-    var bookAsHtml =  '<div class="div-book">'
-    + '<img src="img/bookmark-solid.svg" class="bookmark" onclick="bookmark('+ quote(book.id) + ')">'
-    + '<h4>Titre: ' + (book.shortTitle || book.title) + '</h4>'
+function bookToHtml(book, bookFromGoogle) {
+    var bookAsHtml =  '<div class="div-book">';
+    if (bookFromGoogle) {
+        bookAsHtml += '<img src="img/bookmark-solid.svg"  class="bookmark" onclick="bookmark('+ quote(book.id) + ')">';
+    } else {
+        bookAsHtml += '<img src="img/trash-alt-solid.svg"  class="bookmark" onclick="removeBookmark('+ quote(book.id) + ')">';
+    }
+    
+    bookAsHtml += '<h4>Titre: ' + (book.shortTitle || book.title) + '</h4>'
     + '<h5>Id: '+ book.id + '</h5>'
     + '<h5>Auteur: ' + book.author + '</h5>'
     + '<p>Description: '+ (book.shortDesc || book.desc) + '</p>'
@@ -103,9 +106,24 @@ function bookmark(idBook) {
         alert('Vous ne pouvez ajouter deux fois le même livre');
     } else {
         localStorage.setItem(idBook,JSON.stringify(book));
+        document.getElementById('poch-list').innerHTML += bookToHtml(book, false);
     }
 }
 
+function removeBookmark(idBook) {
+    localStorage.removeItem(idBook);
+    document.getElementById('poch-list').innerHTML='';
+    displaySavedBooks();
+}
+
+function displaySavedBooks(){
+    for(var i=0; i<localStorage.length;i++){
+        var id=localStorage.key(i);
+       var book = localStorage.getItem(id);
+       document.getElementById('poch-list').innerHTML += bookToHtml(JSON.parse(book), false);
+
+    }
+}
 
 function quote(string) {
     return "'" + string + "'";
