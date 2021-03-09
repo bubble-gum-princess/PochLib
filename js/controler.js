@@ -117,11 +117,14 @@ function removeBookmark(idBook) {
 }
 
 function displaySavedBooks(){
-    for(var i=0; i<localStorage.length;i++){
+    for (var i = 0; i < localStorage.length; i++) {
         var id=localStorage.key(i);
-       var book = localStorage.getItem(id);
-       document.getElementById('poch-list').innerHTML += bookToHtml(JSON.parse(book), false);
-
+        var book = localStorage.getItem(id);
+        var div = document.getElementById('poch-list');
+        if (i % 2 === 1) {
+            div.innerHTML += '<div class="div-empty"></div>';
+        }
+        div.innerHTML += bookToHtml(JSON.parse(book), false);
     }
 }
 
