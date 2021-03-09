@@ -200,3 +200,10 @@ input {
 .div-book h5 {
     margin-top: -1.2em;
 }
+.bookmark{
+    width: 1.2em;
+    float: right;
+    margin-top: 0.2em;
+    margin-right: 0.5em;
+    cursor: pointer;
+}

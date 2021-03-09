@@ -33,12 +33,10 @@ function search() {
         return;
     }
     var searchLink = "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author + "+intitle:" + title;
-    console.log(searchLink);
     var result = httpGet(searchLink);
     
-    var books = [];
+    var books = [];    
     var items = result.items;
-    console.log('items', items);
     if (!items) {
         displaySearchMessage("Aucun livre n'a était trouvé");
         return;
@@ -60,10 +58,13 @@ function search() {
         }
         
         books.push(book);
+        mapBooks[book.id] = book;
     }
 
     displayBooks(books);
 }
+
+var mapBooks = {};
 
 function displayBooks(books) {
     var div = document.getElementById('searchResult');
@@ -84,13 +85,30 @@ function displaySearchMessage(msg) {
 }
 
 function bookToHtml(book) {
-    return '<div class="div-book">'
+    var bookAsHtml =  '<div class="div-book">'
+    + '<img src="img/bookmark-solid.svg" class="bookmark" onclick="bookmark('+ quote(book.id) + ')">'
     + '<h4>Titre: ' + (book.shortTitle || book.title) + '</h4>'
     + '<h5>Id: '+ book.id + '</h5>'
     + '<h5>Auteur: ' + book.author + '</h5>'
     + '<p>Description: '+ (book.shortDesc || book.desc) + '</p>'
     + '<img src="'+ book.image + '" class="img-responsive img-book" >'
     + '</div>';
+
+    return bookAsHtml;
+}
+
+function bookmark(idBook) {
+    var book = mapBooks[idBook];
+    if (localStorage.getItem(idBook)){
+        alert('Vous ne pouvez ajouter deux fois le même livre');
+    } else {
+        localStorage.setItem(idBook,JSON.stringify(book));
+    }
+}
+
+
+function quote(string) {
+    return "'" + string + "'";
 }
 
 function httpGet(theUrl) {
