@@ -4,6 +4,8 @@ $default_text_color : #333;
 $font_google : 'Shippori Mincho B1', serif;
 $font_size : 14px;
 $line_height : 1.42857143;
+$max_mobile_width : 665px;
+$min_desktop_width : $max_mobile_width + 1;
 
 body {
     font-family:  $font_google;
@@ -25,21 +27,22 @@ label {
 }
 .btn-block {
     display: block;
-    width: 24%;
+    width: 50%;
+    @media (max-width: $max_mobile_width) {
+         width: 50%;
+    }
+    @media (min-width: $min_desktop_width) {
+        width: 24%;
+    }
 }
 
-$min_tablet_width : 768px;
-$min_desktop_width : 992px;
 .web-page {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    @media (min-width: $min_tablet_width) {
-        width: 750px;
-    }
     @media (min-width: $min_desktop_width) {
-        width: 970px;
+        width: $min_desktop_width;
     }
 }
 
@@ -60,7 +63,13 @@ $background_color_grey : #eee;
         height: 65px;
         border-radius: 8px;
         padding-top: 10px;
-        padding-right: 110px;
+        
+        @media (max-width: $max_mobile_width) {
+            padding-right: 0px; 
+        } 
+        @media (min-width: $min_desktop_width) {
+            padding-right: 110px; 
+        } 
     }
 }
 
@@ -102,7 +111,7 @@ $color_btn_dark_red :#b92c28;
 }
 
 @mixin btn-hover($medium, $border_color) {
-    background-color: $color_btn_medium_green;
+    background-color: $medium;
     background-position: 0 -15px;
     color: #fff;
     text-decoration: none;
@@ -160,8 +169,7 @@ $div_book_left_margin : 2%;
 .div-book {
     background-color: #eee;
     border: 1px solid black;
-    height: 450px;
-    width: $div_book_width;
+    height: 450px;    
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
@@ -170,20 +178,35 @@ $div_book_left_margin : 2%;
     padding-left: 3px;
     border-radius: 8px;
     h5 { margin-top: -1.2em; }
+    h4 {
+        margin-block-start: 0.33em;
+        margin-block-end: 1.33em;
+    }    
+    @media (max-width: $max_mobile_width) {
+         width: 100%;
+    }
+    @media (min-width: $min_desktop_width) {
+        width: $div_book_width;
+    }
 
 }
 .div-empty {
-    width: (100% - ($div_book_width + $div_book_left_margin) * 2);
-    min-height: 1px;
-    float: left;
+    @media (max-width: $max_mobile_width) {
+        display: none;
+    }
+    @media (min-width: $min_desktop_width) {
+        width: (100% - ($div_book_width + $div_book_left_margin) * 2);
+        min-height: 1px;
+        float: left;
+    }
 }
 .img-book {
     border-radius: 8px;
     margin-left: 27%;
-    height: 180px;
+    height: 200px;
 }
 
-.bookmark{
+.bookmark {
     width: 1.2em;
     float: right;
     margin-top: 0.2em;

@@ -7,16 +7,12 @@ function display(id) {
 
 function addBook() {
    display("searchForm");
-   display("line2");
-   hide("line1");
    hide('newBook');
-
 } 
 
 function cancelSearch() {
     hide("searchForm");
     display('newBook');
-    display('line1')
     document.getElementById('title').value="";
     document.getElementById('author').value="";
     document.getElementById('searchResult').innerHTML="";
@@ -58,7 +54,7 @@ function search() {
         books.push(book);
         mapBooks[book.id] = book;
     }
-
+    
     displayBooks(books);
 }
 
@@ -74,6 +70,7 @@ function displayBooks(books) {
         }
         div.innerHTML += bookToHtml(book, true);
     }
+    div.innerHTML += '<hr>';
     
     books.forEach(book => console.log(book));
 }
