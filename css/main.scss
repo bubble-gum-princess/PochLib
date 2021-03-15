@@ -141,7 +141,6 @@ $color_btn_dark_red :#b92c28;
     text-indent: 0px;
     text-shadow: none;
     text-align: start;
-    appearance: textfield;
     cursor: text; 
     display: block;
     width: 100%;
@@ -179,8 +178,8 @@ $div_book_left_margin : 2%;
     border-radius: 8px;
     h5 { margin-top: -1.2em; }
     h4 {
-        margin-block-start: 0.33em;
-        margin-block-end: 1.33em;
+        margin-top: 0.33em;
+        margin-bottom: 1.33em;
     }    
     @media (max-width: $max_mobile_width) {
          width: 100%;

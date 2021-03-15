@@ -99,24 +99,24 @@ function bookToHtml(book, bookFromGoogle) {
 
 function bookmark(idBook) {
     var book = mapBooks[idBook];
-    if (localStorage.getItem(idBook)){
+    if (sessionStorage.getItem(idBook)){
         alert('Vous ne pouvez ajouter deux fois le même livre');
     } else {
-        localStorage.setItem(idBook,JSON.stringify(book));
+        sessionStorage.setItem(idBook,JSON.stringify(book));
         document.getElementById('poch-list').innerHTML += bookToHtml(book, false);
     }
 }
 
 function removeBookmark(idBook) {
-    localStorage.removeItem(idBook);
+    sessionStorage.removeItem(idBook);
     document.getElementById('poch-list').innerHTML='';
     displaySavedBooks();
 }
 
 function displaySavedBooks(){
-    for (var i = 0; i < localStorage.length; i++) {
-        var id=localStorage.key(i);
-        var book = localStorage.getItem(id);
+    for (var i = 0; i < sessionStorage.length; i++) {
+        var id=sessionStorage.key(i);
+        var book = sessionStorage.getItem(id);
         var div = document.getElementById('poch-list');
         if (i % 2 === 1) {
             div.innerHTML += '<div class="div-empty"></div>';
